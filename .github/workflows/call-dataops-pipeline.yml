@@ -1,0 +1,23 @@
+name: DataOps Pipeline
+
+run-name: ${{ github.repository }}_${{ github.ref_name }}_${{ github.run_id }}.${{ github.run_number }}
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+      - 'catalog-info.yaml'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+      - 'catalog-info.yaml'
+
+jobs:
+  # Chama a solução macro de Dados que ficará centralizada na equipa de plataforma
+  Call-DataOps-Solution:
+    uses: caixagithub/DevSecOps-Solutions/.github/workflows/solution-dataops-pipeline.yaml@main
+    secrets: inherit

@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: databricks-pipeline-vendas
+  description: "Pipeline de dados e notebooks para processamento de vendas no Databricks"
+  tags:
+    - dataops
+    - databricks
+    - python
+  annotations:
+    github.com/project-slug: sua-org/databricks-pipeline-vendas
+    sonarqube.org/project-key: databricks-pipeline-vendas
+spec:
+  type: data-pipeline
+  lifecycle: production
+  owner: data-engineering-team
