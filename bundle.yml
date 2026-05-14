@@ -1,36 +1,17 @@
 bundle:
   name: nomeprojeto_databricks_nprd
 
-# Definição de variáveis que aceitam valores da esteira
-variables:
-  # O bundle busca automaticamente na variável de ambiente DATABRICKS_CLIENT_ID
-  sp_client_id:
-    description: Client ID do Service Principal vindo do Key Vault
-    default: ${env.DATABRICKS_CLIENT_ID}
-  
-  # O bundle busca automaticamente na variável de ambiente DATABRICKS_HOST
-  workspace_host:
-    description: URL do workspace de destino
-    default: ${env.DATABRICKS_HOST}
-
-# Referência aos recursos (Jobs, Pipelines, etc)
-resources:
-  jobs:
-    teste_poc_job:
-      name: "[PoC] Job de Teste - ${bundle.target}"
-      tasks:
-        - task_key: notebook_task
-          notebook_task:
-            notebook_path: ./notebooks/teste_conexao.py
-            base_parameters:
-              # Exemplo de como passar a secret do manifesto para o notebook
-              env_client_id: ${var.sp_client_id}
+# Dizemos ao Databricks EXATAMENTE o que queremos subir (sincronizar)
+sync:
+  include:
+    - ./notebooks/**/* # Vai pegar todos os arquivos dentro da pasta 'notebooks' do repositório
 
 targets:
-  # Alvo de desenvolvimento/homologação
   nprd:
     workspace:
-      host: ${var.workspace_host}
-    mode: development
-    # O deploy será feito nesta pasta dentro do Databricks
-    root_path: /Users/${dash.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+      # O CLI descobre o host sozinho olhando para a variável DATABRICKS_HOST da esteira
+      host: ${env.DATABRICKS_HOST} 
+      
+    # Caminho exato onde os notebooks vão "cair" lá dentro do Databricks
+    # Como é desenvolvimento/homologação, ele cria uma pasta isolada
+    root_path: /Users/${dash.current_user.userName}/projetos/${bundle.name}/${bundle.target}
