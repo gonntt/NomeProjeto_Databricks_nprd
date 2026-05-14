@@ -1,23 +1,18 @@
-name: DataOps Pipeline
-
-run-name: ${{ github.repository }}_${{ github.ref_name }}_${{ github.run_id }}.${{ github.run_number }}
+name: call-dataops-pipeline
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - '.github/**'
-      - 'catalog-info.yaml'
+    branches: [ main ] 
   pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - '.github/**'
-      - 'catalog-info.yaml'
+    branches: [ main ]
 
 jobs:
-  # Chama a solução macro de Dados que ficará centralizada na equipa de plataforma
-  Call-DataOps-Solution:
-    uses: caixagithub/DevSecOps-Solutions/.github/workflows/solution-dataops-pipeline.yaml@main
+  call-dataops:
+    uses: gonntt/devsecops---solution/.github/workflows/dataops-pipeline.yml@main
+    with:
+      environment: nprd
+      # PASSAMOS A INFORMAÇÃO EXATA AQUI:
+      keyvault_name: 'kvdataops'
+      secret_client_id_name: 'databricks-sp-client-id'
+      secret_client_secret_name: 'databricks-sp-client-secret'
     secrets: inherit
