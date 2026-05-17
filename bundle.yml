@@ -9,9 +9,8 @@ sync:
 targets:
   nprd:
     workspace:
-      # O CLI descobre o host sozinho olhando para a variável DATABRICKS_HOST da esteira
-      host: ${env.DATABRICKS_HOST} 
+      # REMOVIDO o host: ${env.DATABRICKS_HOST} daqui.
+      # O CLI descobre o host sozinho olhando diretamente para a variável DATABRICKS_HOST injetada na esteira.
       
-    # Caminho exato onde os notebooks vão "cair" lá dentro do Databricks
-    # Como é desenvolvimento/homologação, ele cria uma pasta isolada
-    root_path: /Users/${dash.current_user.userName}/projetos/${bundle.name}/${bundle.target}
+      # CORREÇÃO: O root_path deve ficar exatamente dentro do bloco workspace
+      root_path: /Users/${dash.current_user.userName}/projetos/${bundle.name}/${bundle.target}
