@@ -16,6 +16,6 @@ jobs:
       environment: nprd
       # PASSAMOS A INFORMAÇÃO EXATA AQUI:
       keyvault_name: 'kvdataops'
-      secret_client_id_name: 'databricks-github-action-sp'
+      secret_client_id_name: 'databricks-github-actions-sp'
       secret_client_secret_name: 'databricks-sp-client-secret'
     secrets: inherit
