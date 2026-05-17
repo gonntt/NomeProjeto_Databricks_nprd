@@ -5,6 +5,7 @@
 
 # COMMAND ----------
 
+
 # CORREÇÃO: O 'import os' foi removido porque não estava sendo usado no código
 
 # Capturando parâmetro passado pelo manifesto bundle
