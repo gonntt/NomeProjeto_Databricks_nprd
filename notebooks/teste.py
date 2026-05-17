@@ -5,14 +5,13 @@
 
 # COMMAND ----------
 
-import os
+# CORREÇÃO: O 'import os' foi removido porque não estava sendo usado no código
 
 # Capturando parâmetro passado pelo manifesto bundle
 client_id_param = dbutils.widgets.get("env_client_id")
 
- 
-
-print(f"✅ Notebook executado com sucesso!")
+# CORREÇÃO: Removido o prefixo 'f' desta primeira string porque ela não possui placeholders {}
+print("✅ Notebook executado com sucesso!")
 print(f"🚀 Projeto: {spark.conf.get('spark.databricks.bundle.name', 'N/A')}")
 print(f"📍 Ambiente: {spark.conf.get('spark.databricks.bundle.target', 'N/A')}")
 
