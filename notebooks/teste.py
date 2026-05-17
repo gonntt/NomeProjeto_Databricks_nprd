@@ -10,7 +10,8 @@ import os
 # Capturando parâmetro passado pelo manifesto bundle
 client_id_param = dbutils.widgets.get("env_client_id")
 
-
+ 
+ 
 
 print(f"✅ Notebook executado com sucesso!")
 print(f"🚀 Projeto: {spark.conf.get('spark.databricks.bundle.name', 'N/A')}")
