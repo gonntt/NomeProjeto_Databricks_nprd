@@ -12,5 +12,6 @@ targets:
       # REMOVIDO o host: ${env.DATABRICKS_HOST} daqui.
       # O CLI descobre o host sozinho olhando diretamente para a variável DATABRICKS_HOST injetada na esteira.
       
+      
       # CORREÇÃO: O root_path deve ficar exatamente dentro do bloco workspace
       root_path: /Users/${dash.current_user.userName}/projetos/${bundle.name}/${bundle.target}
