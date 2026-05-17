@@ -14,8 +14,6 @@ print(f"✅ Notebook executado com sucesso!")
 print(f"🚀 Projeto: {spark.conf.get('spark.databricks.bundle.name', 'N/A')}")
 print(f"📍 Ambiente: {spark.conf.get('spark.databricks.bundle.target', 'N/A')}")
 
-
-
 # Validação de segurança: o valor real da secret nunca deve ser impresso, 
 # mas confirmamos que o parâmetro chegou.
 if client_id_param:
