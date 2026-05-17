@@ -8,6 +8,9 @@ on:
 
 jobs:
   call-dataops:
+    permissions:
+      id-token: write
+      contents: read
     uses: gonntt/devsecops---solution/.github/workflows/dataops-pipeline.yml@main
     with:
       environment: nprd
