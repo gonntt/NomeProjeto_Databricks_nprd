@@ -8,6 +8,4 @@ sync:
 targets:
   nprd:
     workspace:
-      # GOVERNANÇA OK: ${workspace.current_user.userName} se resolve sozinha no Databricks.
-      # Na máquina do dev, vira o e-mail dele. Na esteira, vira a pasta privada do Service Principal.
-      root_path: /Users/${workspace.current_user.userName}/projetos/${bundle.name}/${bundle.target}
+      root_path: /Shared/projetos/${bundle.name}/${bundle.target}
