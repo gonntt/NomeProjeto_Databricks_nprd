@@ -1,17 +1,13 @@
 bundle:
   name: nomeprojeto_databricks_nprd
 
-# Dizemos ao Databricks EXATAMENTE o que queremos subir (sincronizar)
 sync:
   include:
-    - ./notebooks/**/* # Vai pegar todos os arquivos dentro da pasta 'notebooks' do repositório
+    - ./notebooks/**/*
 
 targets:
   nprd:
     workspace:
-      # REMOVIDO o host: ${env.DATABRICKS_HOST} daqui.
-      # O CLI descobre o host sozinho olhando diretamente para a variável DATABRICKS_HOST injetada na esteira.
-      
-
-      # CORREÇÃO: O root_path deve ficar exatamente dentro do bloco workspace
-      root_path: /Shared/projetos/${bundle.name}/${bundle.target}
+      # GOVERNANÇA OK: ${workspace.current_user.userName} se resolve sozinha no Databricks.
+      # Na máquina do dev, vira o e-mail dele. Na esteira, vira a pasta privada do Service Principal.
+      root_path: /Users/${workspace.current_user.userName}/projetos/${bundle.name}/${bundle.target}
