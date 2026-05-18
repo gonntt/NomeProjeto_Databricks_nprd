@@ -5,9 +5,7 @@
 
 # COMMAND ----------
 
-
 # CORREÇÃO: O 'import os' foi removido porque não estava sendo usado no código
-
 # Capturando parâmetro passado pelo manifesto bundle
 client_id_param = dbutils.widgets.get("env_client_id")
 
