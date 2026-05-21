@@ -11,7 +11,7 @@ variables:
     default: "true" # Por padrão vem desativado em desenvolvimento
   smoke_test_path:
     description: "Caminho relativo do notebook de teste"
-    default: "./notebooks/**/*"
+    default: "./notebooks/teste.py"
 
 sync:
   include:
