@@ -1,6 +1,18 @@
 bundle:
   name: nomeprojeto_databricks_nprd
 
+# Chaves liga/desliga para controle da esteira de plataforma
+variables:
+  enable_smoke_test:
+    description: "Ativa ou desativa a execução do Smoke Test (true/false)"
+    default: "true"
+  enable_rollback:
+    description: "Se o Smoke Test falhar, destrói o deploy e limpa o ambiente (true/false)"
+    default: "false" # Por padrão vem desativado em desenvolvimento
+  smoke_test_path:
+    description: "Caminho relativo do notebook de teste"
+    default: "./notebooks/teste.py"
+
 sync:
   include:
     - ./notebooks/**/*
