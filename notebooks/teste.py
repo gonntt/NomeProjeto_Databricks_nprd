@@ -11,6 +11,7 @@
 client_id_param = dbutils.widgets.get("env_client_id")
 
 
+
 # CORREÇÃO: Removido o prefixo 'f' desta primeira string porque ela não possui placeholders {}
 print("✅ Notebook executado com sucesso!")
 print(f"🚀 Projeto: {spark.conf.get('spark.databricks.bundle.name', 'N/A')}")
