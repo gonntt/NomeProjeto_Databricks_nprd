@@ -8,7 +8,7 @@ variables:
     default: "true"
   enable_rollback:
     description: "Se o Smoke Test falhar, destrói o deploy e limpa o ambiente (true/false)"
-    default: "true" # Por padrão vem desativado em desenvolvimento
+    default: "false" # Por padrão vem desativado em desenvolvimento
   smoke_test_path:
     description: "Caminho relativo do notebook de teste"
     default: "./notebooks/teste.py"
