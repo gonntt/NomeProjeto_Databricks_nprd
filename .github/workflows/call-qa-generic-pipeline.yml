@@ -11,19 +11,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    
-    # Vincula explicitamente ao ambiente nprd onde os seus segredos estão guardados
-    environment: nprd
-    
     uses: gonntt/devsecops---solution/.github/workflows/qa-pipeline.yml@main
-    
     with:
       environment: nprd
-      sistema: "NomeProjeto_Databricks_nprd"
-      sigla: "gonntt"
-      componente: "NomeProjeto_Databricks_nprd"
-      
-    # CORREÇÃO BASEADA NO MODELO DA CAIXA: Passagem explícita de segredos
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    secrets: inherit
