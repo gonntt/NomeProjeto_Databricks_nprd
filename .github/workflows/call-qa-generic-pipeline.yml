@@ -1,0 +1,17 @@
+name: call-qa-pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  call-qa:
+    permissions:
+      id-token: write
+      contents: read
+    uses: gonntt/devsecops---solution/.github/workflows/qa-pipeline.yml@main
+    with:
+      environment: nprd
+    secrets: inherit

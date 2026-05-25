@@ -1,0 +1,18 @@
+name: call-sec-pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  call-sec:
+    permissions:
+      id-token: write
+      contents: read
+      security-events: write
+    uses: gonntt/devsecops---solution/.github/workflows/sec-pipeline.yml@main
+    with:
+      environment: nprd
+    secrets: inherit
