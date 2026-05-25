@@ -15,7 +15,4 @@ jobs:
     uses: gonntt/devsecops---solution/.github/workflows/qa-pipeline.yml@main
     with:
       environment: nprd
-      sistema: "NomeProjeto_Databricks_nprd"
-      sigla: "gonntt"
-      componente: "NomeProjeto_Databricks_nprd"
     secrets: inherit
