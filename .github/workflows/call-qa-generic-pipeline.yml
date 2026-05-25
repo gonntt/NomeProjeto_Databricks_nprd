@@ -7,25 +7,23 @@ on:
     branches: [ main ]
 
 jobs:
-  # ID do Job
   call-qa:
-    # 1. As permissões ficam no escopo do job
     permissions:
       id-token: write
       contents: read
     
-    # 2. O environment diz de onde ler os secrets do repositório
+    # Vincula explicitamente ao ambiente nprd onde os seus segredos estão guardados
     environment: nprd
     
-    # 3. A chamada do workflow externo fica direto sob o ID do job (Mesmo nível de permissions e environment)
     uses: gonntt/devsecops---solution/.github/workflows/qa-pipeline.yml@main
     
-    # 4. Parâmetros de entrada limpos para não quebrar o SonarScanner
     with:
       environment: nprd
       sistema: "NomeProjeto_Databricks_nprd"
       sigla: "gonntt"
       componente: "NomeProjeto_Databricks_nprd"
       
-    # 5. Herança explícita para injetar o SONAR_TOKEN e SONAR_HOST_URL salvos no environment nprd
-    secrets: inherit
+    # CORREÇÃO BASEADA NO MODELO DA CAIXA: Passagem explícita de segredos
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
