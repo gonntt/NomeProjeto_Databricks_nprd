@@ -11,12 +11,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: nprd
     uses: gonntt/devsecops---solution/.github/workflows/qa-pipeline.yml@main
     with:
       environment: nprd
-      # ADEQUAÇÃO: Adicionado aspas simples internas para fixar o espaço do nome do projeto
-      sistema: "Databricks"
-      sigla: "SIRMC"
-      componente: "databricks-vendas"
     secrets: inherit
